@@ -1,0 +1,2322 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     61168,       2312]
+NotebookOptionsPosition[     47087,       1806]
+NotebookOutlinePosition[     48886,       1854]
+CellTagsIndexPosition[     48843,       1851]
+WindowTitle->Morphisms and composition - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[" ", "TutorialColorBar",
+ CellMargins->{{Inherited, Inherited}, {-5, 0}}],
+
+Cell[TextData[{
+ ButtonBox["WildCats",
+  BaseStyle->{"Link", "LinkTrail"},
+  ButtonData->"paclet:WildCats/guide/WildCats"],
+ StyleBox[" > ", "LinkTrailSeparator"]
+}], "LinkTrail"],
+
+Cell[BoxData[GridBox[{
+   {Cell["WILD CATS PACKAGE TUTORIAL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Related Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Displaying diagrams\"\>":>
+       Documentation`HelpLookup[
+       "paclet:WildCats/tutorial/DisplayingDiagrams"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"WildCats Guide\"\>":>
+       Documentation`HelpLookup["paclet:WildCats/guide/WildCats"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Functions \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Cod\"\>":>Documentation`HelpLookup[
+       "paclet:WildCats/ref/Cod"], "\<\"DC\"\>":>Documentation`HelpLookup[
+       "paclet:WildCats/ref/DC"], "\<\"DefIsomorphism\"\>":>
+       Documentation`HelpLookup[
+       "paclet:WildCats/ref/DefIsomorphism"], "\<\"Dom\"\>":>
+       Documentation`HelpLookup["paclet:WildCats/ref/Dom"], "\<\"Id\"\>":>
+       Documentation`HelpLookup[
+       "paclet:WildCats/ref/Id"], "\<\"Isomorphic\"\>":>
+       Documentation`HelpLookup[
+       "paclet:WildCats/ref/Isomorphic"], "\<\"IsomorphismQ\"\>":>
+       Documentation`HelpLookup[
+       "paclet:WildCats/ref/IsomorphismQ"], "\<\"Op\"\>":>
+       Documentation`HelpLookup["paclet:WildCats/ref/Op"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->
+         False], {"\<\"WildCats/tutorial/MorphismsAndComposition\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["WildCats/tutorial/MorphismsAndComposition"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/WildCats/tutorial/\
+MorphismsAndComposition.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "WildCats/tutorial/MorphismsAndComposition", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["Morphisms and composition", "Title",
+ CellID->509267359],
+
+Cell[TextData[{
+ "This terminates the current ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " session and starts a new clean session"
+}], "Text",
+ CellID->12172402],
+
+Cell["(recommended for troubleshooting)", "Text",
+ CellID->121457497],
+
+Cell[BoxData["Quit"], "Input",
+ CellLabel->"In[1]:=",
+ CellID->309037897],
+
+Cell["This loads the package:", "Text",
+ CellID->1825449234],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<WildCats`\>\"", "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->98796305],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{
+      "\"Loaded WildCats  version \"","\"0.62.1\"","\", \"",RowBox[{"{", 
+         RowBox[{"2013", ",", "5", ",", "8"}], "}"}]},
+      "Row",
+      DisplayFunction->(
+       RowBox[{#, "\[InvisibleSpace]", #2, "\[InvisibleSpace]", #3, 
+         "\[InvisibleSpace]", #4}]& ),
+      InterpretationFunction->(RowBox[{"Row", "[", 
+         RowBox[{"{", 
+           RowBox[{#, ",", #2, ",", #3, ",", #4}], "}"}], "]"}]& )]},
+    {"\<\"Copyright (C) 2009-2013, Alessandro Stecchina,\"\>"},
+    {"\<\"under the General Public License.\"\>"},
+    {"\<\" \"\>"},
+    {"\<\"Loaded Notation package and palette\"\>"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Print",
+ CellLabel->"During evaluation of In[1]:=",
+ CellID->512340332]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Op, Dom, Cod, Id and DC functions", "Section",
+ CellID->358802463],
+
+Cell["A morphism in a quasicategory has a domain and a codomain", "Text",
+ CellID->14534984],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{
+     ButtonBox["Dom",
+      BaseStyle->"Link",
+      ButtonData->"paclet:WildCats/ref/Dom"], "[", 
+     RowBox[{
+      StyleBox["mor",
+       FontSlant->"Italic"], ",", 
+      StyleBox["qcat",
+       FontSlant->"Italic"]}], "]"}], 
+    RowBox[{"domain", " ", "of", " ", "morphism", " ", 
+     StyleBox["mor",
+      FontSlant->"Italic"], " ", "in", " ", "quasicategory", " ", 
+     StyleBox["qcat",
+      FontSlant->"Italic"]}]},
+   {
+    RowBox[{
+     ButtonBox["Cod",
+      BaseStyle->"Link",
+      ButtonData->"paclet:WildCats/ref/Cod"], "[", 
+     RowBox[{
+      StyleBox["mor",
+       FontSlant->"Italic"], ",", 
+      StyleBox["qcat",
+       FontSlant->"Italic"]}], "]"}], Cell[TextData[{
+     "codomain of morphism ",
+     StyleBox["mor",
+      FontSlant->"Italic"],
+     " in quasicategory ",
+     StyleBox["qcat",
+      FontSlant->"Italic"]
+    }], "TableText"]},
+   {
+    RowBox[{
+     ButtonBox["Op",
+      BaseStyle->"Link",
+      ButtonData->"paclet:WildCats/ref/Op"], "[", 
+     RowBox[{
+      StyleBox["mor1",
+       FontSlant->"Italic"], ",", 
+      StyleBox["mor2",
+       FontSlant->"Italic"], ",", 
+      StyleBox["morn",
+       FontSlant->"Italic"], ",", 
+      StyleBox["qcat",
+       FontSlant->"Italic"]}], "]"}], Cell[TextData[{
+     "composition of ",
+     StyleBox["mor1",
+      FontSlant->"Italic"],
+     ", ",
+     StyleBox["mor2",
+      FontSlant->"Italic"],
+     ",..., ",
+     StyleBox["morn",
+      FontSlant->"Italic"],
+     " in quasicategory ",
+     StyleBox["qcat",
+      FontSlant->"Italic"]
+    }], "TableText"]}
+  }]], "DefinitionBox",
+ CellID->53979084],
+
+Cell["Domain, codomain and composition of morphisms.", "Caption",
+ CellID->307156157],
+
+Cell["\<\
+Notice that Dom and Cod have two arguments. The second argument indicates the \
+quasicategory where the morphism has been defined. \
+\>", "Text",
+ CellID->322829799],
+
+Cell[TextData[{
+ "As was explained in the tutorial ",
+ ButtonBox["Predicate (Query) functions",
+  BaseStyle->"Link",
+  ButtonData->"paclet:WildCats/tutorial/PredicateQueryFunctions"],
+ ", the same symbol or expression may represent a different type of \
+mathematical entity in different categories, so for example the same morphism \
+can have a different domain or codomain in another quasicategory."
+}], "Text",
+ CellID->529195021],
+
+Cell["\<\
+A typical case happens with morphisms in the opposite category where the same \
+morphism (represented by the same symbol) has opposite domain and codomain, \
+compared to the starting category\
+\>", "Text",
+ CellID->5948448],
+
+Cell[TextData[{
+ "Define some objects in ",
+ Cell[BoxData[
+  ButtonBox["\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WildCats/ref/\[DoubleStruckCapitalG]\[DoubleStruckR]\
+\[DoubleStruckP]"]], "InlineFormula"],
+ ". "
+}], "Text",
+ CellID->482853909],
+
+Cell["It is possible to use DefObject with multiple arguments", "Text",
+ CellID->284381241],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DefObject", "[", 
+  RowBox[{
+  "g1", ",", "g2", ",", "g3", ",", "g4", ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->105709918],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"Null", ",", "Null", ",", "Null", ",", "Null"}], "}"}]], "Output",
+ ImageSize->{163, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->18641212]
+}, Open  ]],
+
+Cell["\<\
+Verify that g1,g2,g3,g4 are in \[DoubleStruckCapitalG]\[DoubleStruckR]\
+\[DoubleStruckP]\
+\>", "Text",
+ CellID->635870023],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ObjectQ", "[", 
+  RowBox[{
+  "g1", ",", "g2", ",", "g3", ",", "g4", ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->5702621],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"True", ",", "True", ",", "True", ",", "True"}], "}"}]], "Output",
+ ImageSize->{163, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->286022784]
+}, Open  ]],
+
+Cell["\<\
+They also appear in Objects[\[DoubleStruckCapitalG]\[DoubleStruckR]\
+\[DoubleStruckP]] list   \
+\>", "Text",
+ CellID->6082202],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Objects", "[", 
+  "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]", "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->51781414],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"g1", ",", "g2", ",", "g3", ",", "g4"}], "}"}]], "Output",
+ ImageSize->{107, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->263823987]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now define some morphisms in ",
+ Cell[BoxData[
+  ButtonBox["\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WildCats/ref/\[DoubleStruckCapitalG]\[DoubleStruckR]\
+\[DoubleStruckP]"]], "InlineFormula"],
+ ". "
+}], "Text",
+ CellID->527725998],
+
+Cell[BoxData[{
+ RowBox[{"DefMorphism", "[", 
+  RowBox[{
+  "f1", ",", "g1", ",", "g2", ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], "]"}], "\n", 
+ RowBox[{"DefMorphism", "[", 
+  RowBox[{
+  "f2", ",", "g2", ",", "g3", ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"DefMorphism", "[", 
+  RowBox[{
+  "f3", ",", "g3", ",", "g4", ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]}], "Input",
+ CellLabel->"In[5]:=",
+ CellID->116325141],
+
+Cell[TextData[{
+ "f1 and f2 and f3 are now listed as morphisms in ",
+ Cell[BoxData[
+  ButtonBox["\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WildCats/ref/\[DoubleStruckCapitalG]\[DoubleStruckR]\
+\[DoubleStruckP]"]], "InlineFormula"]
+}], "Text",
+ CellID->87388233],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Morphisms", "[", 
+  "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]", "]"}]], "Input",
+ CellLabel->"In[8]:=",
+ CellID->74457813],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"f1", ",", "f2", ",", "f3"}], "}"}]], "Output",
+ ImageSize->{82, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[8]=",
+ CellID->562383849]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MorphismQ", "[", 
+    RowBox[{
+    "#", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+    "]"}], "&"}], "/@", 
+  RowBox[{"{", 
+   RowBox[{"f1", ",", "f2", ",", "f3"}], "}"}]}]], "Input",
+ CellLabel->"In[9]:=",
+ CellID->42135938],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"True", ",", "True", ",", "True"}], "}"}]], "Output",
+ ImageSize->{124, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[9]=",
+ CellID->494396053]
+}, Open  ]],
+
+Cell["Check that ", "Text",
+ CellID->156888268],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dom", "[", 
+  RowBox[{
+  "f1", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[10]:=",
+ CellID->392817837],
+
+Cell[BoxData["g1"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[10]=",
+ CellID->687863488]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cod", "[", 
+  RowBox[{
+  "f1", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->112728723],
+
+Cell[BoxData["g2"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]=",
+ CellID->751763745]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dom", "[", 
+  RowBox[{
+  "f2", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->50309444],
+
+Cell[BoxData["g2"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]=",
+ CellID->140438883]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cod", "[", 
+  RowBox[{
+  "f2", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[13]:=",
+ CellID->216625066],
+
+Cell[BoxData["g3"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[13]=",
+ CellID->22289159]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dom", "[", 
+  RowBox[{
+  "f3", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->15567179],
+
+Cell[BoxData["g3"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]=",
+ CellID->933638138]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cod", "[", 
+  RowBox[{
+  "f3", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[15]:=",
+ CellID->523966707],
+
+Cell[BoxData["g4"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[15]=",
+ CellID->417384656]
+}, Open  ]],
+
+Cell[TextData[{
+ "The function ",
+ Cell[BoxData[
+  ButtonBox["DC",
+   BaseStyle->"Link",
+   ButtonData->"paclet:WildCats/ref/DC"]], "InlineFormula"],
+ " is used to quickly get domain and codomain information about a morphism"
+}], "Text",
+ CellID->91489854],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{
+     ButtonBox["DC",
+      BaseStyle->"Link",
+      ButtonData->"paclet:WildCats/ref/DC"], "[", 
+     RowBox[{
+      StyleBox["mor",
+       FontSlant->"Italic"], ",", 
+      StyleBox["qcat",
+       FontSlant->"Italic"]}], "]"}], Cell[TextData[{
+     "returns the domain and codomain of ",
+     StyleBox["mor",
+      FontSlant->"Italic"],
+     " in quasicategory ",
+     StyleBox["qcat",
+      FontSlant->"Italic"]
+    }], "TableText"]}
+  }]], "DefinitionBox",
+ CellID->191169632],
+
+Cell["Getting the domain and codomain.", "Caption",
+ CellID->97514833],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DC", "[", 
+  RowBox[{
+  "f1", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->22468142],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"g1", "\[Rule]", "g2"}], ",", "f1"}], "}"}]], "Output",
+ ImageSize->{88, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]=",
+ CellID->177664918]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DC", "[", 
+  RowBox[{
+  "f2", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[17]:=",
+ CellID->7276119],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"g2", "\[Rule]", "g3"}], ",", "f2"}], "}"}]], "Output",
+ ImageSize->{88, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[17]=",
+ CellID->885132613]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DC", "[", 
+  RowBox[{
+  "f3", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[18]:=",
+ CellID->86616915],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"g3", "\[Rule]", "g4"}], ",", "f3"}], "}"}]], "Output",
+ ImageSize->{88, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[18]=",
+ CellID->203322018]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["DC",
+   BaseStyle->"Link",
+   ButtonData->"paclet:WildCats/ref/DC"]], "InlineFormula"],
+ " is used for example in ",
+ Cell[BoxData[
+  ButtonBox["CategoryPlot",
+   BaseStyle->"Link",
+   ButtonData->"paclet:WildCats/ref/CategoryPlot"]], "InlineFormula"],
+ " as will be shown in tutorial ",
+ ButtonBox["Displaying Diagrams",
+  BaseStyle->"Link",
+  ButtonData->"paclet:WildCats/tutorial/DisplayingDiagrams"],
+ ". "
+}], "Text",
+ CellID->378713040],
+
+Cell["\<\
+f1, f2 are composable so their composition in \[DoubleStruckCapitalG]\
+\[DoubleStruckR]\[DoubleStruckP] is\
+\>", "Text",
+ CellID->132375496],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Op", "[", 
+  RowBox[{
+  "f2", ",", "f1", ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[13]:=",
+ CellID->672952109],
+
+Cell[BoxData[
+ RowBox[{"f2", " ", 
+  UnderscriptBox["\[EmptyCircle]", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+  "f1"}]], "Output",
+ ImageSize->{54, 23},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[13]=",
+ CellID->314367302]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["Op",
+   BaseStyle->"Link",
+   ButtonData->"paclet:WildCats/ref/Op"]], "InlineFormula"],
+ "[f2,f1,\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]] is parsed \
+and formatted with a special notation - ",
+ Cell[BoxData[
+  UnderscriptBox["\[EmptyCircle]", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"]]],
+ " - very close to the standard mathematical form used for composition."
+}], "Text",
+ CellID->705443654],
+
+Cell["Notice that each quasicategory has its own composition.", "Text",
+ CellID->268669644],
+
+Cell["\<\
+The host quasicategory is indicated below the generic composition ( \
+\[EmptyCircle] ) symbol.\
+\>", "Text",
+ CellID->379104138],
+
+Cell[TextData[{
+ "It is possible to enter the composition of morphisms directly by typing \
+with \[ControlKey]-4 (\[CommandKey]-4 on the Mac) the Underscript template ",
+ Cell[BoxData[
+  UnderscriptBox["\[Placeholder]", "\[Placeholder]"]], "InlineFormula"],
+ " and then filling the placeholders with the symbol \[EmptyCircle] \
+(EmptyCircle, alias \[EscapeKey]eci\[EscapeKey]) and the ",
+ "quasicategory",
+ " name to obtain   ",
+ Cell[BoxData[
+  UnderscriptBox["\[EmptyCircle]", "qcat"]], "InlineFormula"],
+ "."
+}], "Text",
+ CellID->30424415],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{
+     ButtonBox["Op",
+      BaseStyle->"Link",
+      ButtonData->"paclet:WildCats/ref/Op"], "[", 
+     RowBox[{
+      StyleBox["mor1",
+       FontSlant->"Italic"], ",", 
+      StyleBox["mor2",
+       FontSlant->"Italic"], ",", "...", ",", 
+      StyleBox["qcat",
+       FontSlant->"Italic"]}], "]"}], Cell[TextData[{
+     "represents the composition of morphisms in quasicategory ",
+     StyleBox["qcat",
+      FontSlant->"Italic"]
+    }], "TableText"]},
+   {
+    RowBox[{
+     StyleBox["f3",
+      FontSlant->"Italic"], 
+     UnderscriptBox["\[EmptyCircle]", 
+      StyleBox["qcat",
+       FontSlant->"Italic"]], 
+     StyleBox["f2",
+      FontSlant->"Italic"], " ", 
+     UnderscriptBox["\[EmptyCircle]", 
+      StyleBox["qcat",
+       FontSlant->"Italic"]], 
+     StyleBox["f1",
+      FontSlant->"Italic"], " "}], Cell[TextData[{
+     "formatted composition of morphisms in quasicategory ",
+     StyleBox["qcat",
+      FontSlant->"Italic"]
+    }], "TableText"]}
+  }]], "DefinitionBox",
+ CellID->266772622],
+
+Cell[TextData[{
+ "The composition of morphisms in ",
+ Cell[BoxData[
+  ButtonBox["\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WildCats/ref/\[DoubleStruckCapitalG]\[DoubleStruckR]\
+\[DoubleStruckP]"]], "InlineFormula"],
+ " is another morphism in ",
+ Cell[BoxData[
+  ButtonBox["\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WildCats/ref/\[DoubleStruckCapitalG]\[DoubleStruckR]\
+\[DoubleStruckP]"]], "InlineFormula"]
+}], "Text",
+ CellID->134780893],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MorphismQ", "[", 
+  RowBox[{
+   RowBox[{"Op", "[", 
+    RowBox[{
+    "f2", ",", "f1", ",", 
+     "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], "]"}], ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[14]:=",
+ CellID->243295633],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[14]=",
+ CellID->182117859]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["Op",
+   BaseStyle->"Link",
+   ButtonData->"paclet:WildCats/ref/Op"]], "InlineFormula"],
+ " is associative"
+}], "Text",
+ CellID->49096386],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Op", "[", 
+  RowBox[{
+   RowBox[{"Op", "[", 
+    RowBox[{
+    "f3", ",", "f2", ",", 
+     "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], "]"}], ",", 
+   "f1", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[15]:=",
+ CellID->132176683],
+
+Cell[BoxData[
+ RowBox[{"f3", 
+  UnderscriptBox["\[EmptyCircle]", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+  RowBox[{"f2", " ", 
+   UnderscriptBox["\[EmptyCircle]", 
+    "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+   "f1"}]}]], "Output",
+ ImageSize->{90, 23},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[15]=",
+ CellID->299570999]
+}, Open  ]],
+
+Cell["or", "Text",
+ CellID->434829718],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f3", 
+  UnderscriptBox["\[EmptyCircle]", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+  RowBox[{"(", 
+   RowBox[{"f2", " ", 
+    UnderscriptBox["\[EmptyCircle]", 
+     "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], "f1"}], " ", 
+   ")"}]}]], "Input",
+ CellLabel->"In[16]:=",
+ CellID->34316674],
+
+Cell[BoxData[
+ RowBox[{"f3", 
+  UnderscriptBox["\[EmptyCircle]", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+  RowBox[{"f2", " ", 
+   UnderscriptBox["\[EmptyCircle]", 
+    "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+   "f1"}]}]], "Output",
+ ImageSize->{90, 23},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[16]=",
+ CellID->374989292]
+}, Open  ]],
+
+Cell[TextData[{
+ "with identity morphisms ",
+ Cell[BoxData[
+  ButtonBox["Id",
+   BaseStyle->"Link",
+   ButtonData->"paclet:WildCats/ref/Id"]], "InlineFormula"]
+}], "Text",
+ CellID->656244376],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{
+     ButtonBox["Id",
+      BaseStyle->"Link",
+      ButtonData->"paclet:WildCats/ref/Id"], "[", 
+     RowBox[{
+      StyleBox["obj",
+       FontSlant->"Italic"], ",", 
+      StyleBox["qcat",
+       FontSlant->"Italic"]}], "]"}], Cell[TextData[{
+     "the identity morphism of object ",
+     StyleBox["obj",
+      FontSlant->"Italic"],
+     " in quasicategory ",
+     StyleBox["qcat",
+      FontSlant->"Italic"]
+    }], "TableText"]},
+   {
+    SubsuperscriptBox["Id", 
+     StyleBox["obj",
+      FontSlant->"Italic"], 
+     StyleBox["qcat",
+      FontSlant->"Italic"]], Cell[TextData[{
+     "formatted identity morphism of ",
+     StyleBox["obj",
+      FontSlant->"Italic"],
+     " in ",
+     StyleBox["qcat",
+      FontSlant->"Italic"]
+    }], "TableText"]}
+  }]], "DefinitionBox",
+ CellID->785282139],
+
+Cell["Identity morphisms.", "Caption",
+ CellID->85869158],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f1", 
+  UnderscriptBox["\[EmptyCircle]", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+  RowBox[{"Id", "[", 
+   RowBox[{
+   "g1", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[17]:=",
+ CellID->598587979],
+
+Cell[BoxData["f1"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[17]=",
+ CellID->123943630]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SubsuperscriptBox["Id", "g2", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+  UnderscriptBox["\[EmptyCircle]", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+  "f1"}]], "Input",
+ CellLabel->"In[18]:=",
+ CellID->363762361],
+
+Cell[BoxData["f1"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[18]=",
+ CellID->261395442]
+}, Open  ]],
+
+Cell["Some invalid inputs are caught", "Text",
+ CellID->345684680],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Id", "[", 
+  RowBox[{"g1", ",", "grp"}], "]"}]], "Input",
+ CellLabel->"In[19]:=",
+ CellID->7077067],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ObjectQ", "::", "nocat"}], "MessageName"], ":", 
+  " ", "\<\"Argument \[NoBreak]\\!\\(grp\\)\[NoBreak] is not a \
+category.\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[19]:=",
+ CellID->356193465],
+
+Cell[BoxData["$Aborted"], "Output",
+ ImageSize->{60, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[19]=",
+ CellID->683527645]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Id", "[", 
+  RowBox[{
+  "gg", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[20]:=",
+ CellID->665982123],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Id", "::", "noobj"}], "MessageName"], ":", 
+  " ", "\<\"Argument \[NoBreak]\\!\\(gg\\)\[NoBreak] is not an object of \
+\[NoBreak]\\!\\(\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]\\)\
+\[NoBreak].\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[20]:=",
+ CellID->308154445],
+
+Cell[BoxData["$Aborted"], "Output",
+ ImageSize->{60, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[20]=",
+ CellID->16605634]
+}, Open  ]],
+
+Cell["\<\
+But in general not all possible errors are caught at this stage of \
+development.\
+\>", "Text",
+ CellID->938692815],
+
+Cell["\<\
+In particular, Wildcats does not check that morphisms are actually composable.\
+\>", "Text",
+ CellID->145317584],
+
+Cell["\<\
+Domain and codomain of compositions are automatically computed\
+\>", "Text",
+ CellID->36620014],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DC", "[", 
+  RowBox[{
+   RowBox[{"f2", " ", 
+    UnderscriptBox["\[EmptyCircle]", 
+     "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], "f1"}], ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[21]:=",
+ CellID->385802740],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"g1", "\[Rule]", "g3"}], ",", 
+   RowBox[{"f2", " ", 
+    UnderscriptBox["\[EmptyCircle]", 
+     "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], "f1"}]}], 
+  "}"}]], "Output",
+ ImageSize->{124, 25},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[21]=",
+ CellID->205196074]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DC", "[", 
+  RowBox[{
+   RowBox[{"f3", " ", 
+    UnderscriptBox["\[EmptyCircle]", 
+     "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], "f2", " ", 
+    UnderscriptBox["\[EmptyCircle]", 
+     "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], "f1"}], ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[33]:=",
+ CellID->287392343],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"g1", "\[Rule]", "g4"}], ",", 
+   RowBox[{"f3", 
+    UnderscriptBox["\[EmptyCircle]", 
+     "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], 
+    RowBox[{"f2", " ", 
+     UnderscriptBox["\[EmptyCircle]", 
+      "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], "f1"}]}]}], 
+  "}"}]], "Output",
+ ImageSize->{160, 25},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[33]=",
+ CellID->3253112]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DC", "[", 
+  RowBox[{
+   SubsuperscriptBox["Id", "g1", 
+    "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"], ",", 
+   "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[22]:=",
+ CellID->131648336],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"g1", "\[Rule]", "g1"}], ",", 
+   SubsuperscriptBox["Id", "g1", 
+    "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"]}], 
+  "}"}]], "Output",
+ ImageSize->{105, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[22]=",
+ CellID->120249089]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["Op",
+   BaseStyle->"Link",
+   ButtonData->"paclet:WildCats/ref/Op"]], "InlineFormula"],
+ " with one argument has no effect"
+}], "Text",
+ CellID->64440227],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Op", "[", 
+  RowBox[{
+  "f1", ",", "\[DoubleStruckCapitalG]\[DoubleStruckR]\[DoubleStruckP]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[23]:=",
+ CellID->334936674],
+
+Cell[BoxData["f1"], "Output",
+ ImageSize->{18, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[23]=",
+ CellID->76518139]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Isomorphisms", "Section",
+ CellID->2234655],
+
+Cell["\<\
+In Category Theory one is generally interested in identifying or defining \
+objects up to isomorphism. This is because two isomorphic objects in a \
+category are essentially indistinguishable with respect to categorial \
+properties. In other words: two isomorphic objects are essentially the same.\
+\>", "Text",
+ CellID->389976467],
+
+Cell["\<\
+Often in Category Theory one states that two objects are isomorphic, without \
+even stating explicitly which isomorphism is being considered.  \
+\>", "Text",
+ CellID->215910495],
+
+Cell["This is done in WildCats with DefIsomorphism", "Text",
+ CellID->554251983],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{
+     ButtonBox["DefIsomorphism",
+      BaseStyle->"Link",
+      ButtonData->"paclet:WildCats/ref/DefIsomorphism"], "[", 
+     StyleBox[
+      RowBox[{"obj1", ",", "obj2", ",", "wcat"}],
+      FontSlant->"Italic"], "]"}], Cell[TextData[{
+     "asserts that ",
+     StyleBox["obj1",
+      FontSlant->"Italic"],
+     " and ",
+     StyleBox["obj2",
+      FontSlant->"Italic"],
+     " are isomorphic in wcat"
+    }], "TableText"]},
+   {
+    RowBox[{
+     RowBox[{
+      ButtonBox["Isomorphic",
+       BaseStyle->"Link",
+       ButtonData->"paclet:WildCats/ref/Isomorphic"], "[", 
+      StyleBox["wcat",
+       FontSlant->"Italic"], "]"}], "[", 
+     StyleBox[
+      RowBox[{"obj1", ",", "obj2"}],
+      FontSlant->"Italic"], "]"}], Cell[TextData[{
+     "returns True if ",
+     StyleBox["obj1",
+      FontSlant->"Italic"],
+     " and ",
+     StyleBox["obj2",
+      FontSlant->"Italic"],
+     " are identical objects of ",
+     StyleBox["wcat",
+      FontSlant->"Italic"]
+    }], "TableText"]},
+   {
+    RowBox[{
+     StyleBox["obj1",
+      FontSlant->"Italic"], " ", 
+     UnderscriptBox["\[TildeFullEqual]", 
+      StyleBox["wcat",
+       FontSlant->"Italic"]], 
+     StyleBox["obj2",
+      FontSlant->"Italic"]}], Cell[TextData[{
+     "Parsed and formatted Isomorphic[",
+     StyleBox["wcat",
+      FontSlant->"Italic"],
+     "][",
+     StyleBox["obj1, obj2",
+      FontSlant->"Italic"],
+     "]"
+    }], "TableText"]},
+   {
+    RowBox[{
+     RowBox[{
+      ButtonBox["IsomorphismQ",
+       BaseStyle->"Link",
+       ButtonData->"paclet:WildCats/ref/IsomorphismQ"], "[", 
+      StyleBox["wcat",
+       FontSlant->"Italic"], "]"}], "[", 
+     StyleBox[
+      RowBox[{"obj1", ",", "obj2"}],
+      FontSlant->"Italic"], "]"}], Cell[TextData[{
+     "returns True if ",
+     StyleBox["obj1",
+      FontSlant->"Italic"],
+     " and ",
+     StyleBox["obj2",
+      FontSlant->"Italic"],
+     " are isomorphic objects of ",
+     StyleBox["wcat",
+      FontSlant->"Italic"]
+    }], "TableText"]}
+  }]], "DefinitionBox",
+ CellID->347636196],
+
+Cell["Defining, representing and checking isomorphisms.", "Caption",
+ CellID->265526728],
+
+Cell["\<\
+Define an empty category (do not fill any object/morphism in the dialog box).\
+\>", "Text",
+ CellID->158026164],
+
+Cell[BoxData[
+ RowBox[{"DefCategory", "[", "\[DoubleStruckCapitalC]", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->19701773],
+
+Cell["Define objects in \[DoubleStruckCapitalC]", "Text",
+ CellID->107765278],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DefObject", "[", 
+  RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "\[DoubleStruckCapitalC]"}],
+   "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->59585733],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"Null", ",", "Null", ",", "Null", ",", "Null"}], "}"}]], "Output",
+ ImageSize->{163, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->275401668]
+}, Open  ]],
+
+Cell["Assert that object a and object b are isomorphic", "Text",
+ CellID->346903972],
+
+Cell[BoxData[
+ RowBox[{"DefIsomorphism", "[", 
+  RowBox[{"a", ",", "b", ",", "\[DoubleStruckCapitalC]"}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->273279975],
+
+Cell["Assert that object b and object c are isomorphic", "Text",
+ CellID->587577139],
+
+Cell[BoxData[
+ RowBox[{"DefIsomorphism", "[", 
+  RowBox[{"b", ",", "c", ",", "\[DoubleStruckCapitalC]"}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->150168550],
+
+Cell["\<\
+IsomorphismQ[\[DoubleStruckCapitalC]] is used to test whether two objects in \
+\[DoubleStruckCapitalC] are isomorphic.\
+\>", "Text",
+ CellID->699853762],
+
+Cell["\<\
+Every object in \[DoubleStruckCapitalC] is automatically isomorphic to itself,\
+\>", "Text",
+ CellID->755513680],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+    RowBox[{"d", ",", "d"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+    RowBox[{"a", ",", "a"}], "]"}]}], "}"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->53840751],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"True", ",", "True"}], "}"}]], "Output",
+ ImageSize->{85, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->20300558]
+}, Open  ]],
+
+Cell["\<\
+but if an argument is not even an object of \[DoubleStruckCapitalC], \
+IsomorphismQ returns False\
+\>", "Text",
+ CellID->90289793],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+    RowBox[{"p", ",", "p"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+    RowBox[{"p", ",", "q"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+    RowBox[{"a", ",", "q"}], "]"}]}], "}"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->378117039],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"False", ",", "False", ",", "False"}], "}"}]], "Output",
+ ImageSize->{145, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->898300565]
+}, Open  ]],
+
+Cell["WildCats was told that a and b are Isomorphic", "Text",
+ CellID->272356460],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+  RowBox[{"a", ",", "b"}], "]"}]], "Input",
+ CellLabel->"In[7]:=",
+ CellID->817474098],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[7]=",
+ CellID->36681386]
+}, Open  ]],
+
+Cell["and also that b and c are Isomorphic", "Text",
+ CellID->954219632],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+  RowBox[{"b", ",", "c"}], "]"}]], "Input",
+ CellLabel->"In[8]:=",
+ CellID->345286876],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[8]=",
+ CellID->164390855]
+}, Open  ]],
+
+Cell["\<\
+so it will automatically deduce that a and c are isomorphic, using the \
+transitive property of isomorphism\
+\>", "Text",
+ CellID->116329986],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+  RowBox[{"a", ",", "c"}], "]"}]], "Input",
+ CellLabel->"In[8]:=",
+ CellID->28636138],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[8]=",
+ CellID->95029273]
+}, Open  ]],
+
+Cell["At the moment, b and d are not isomorphic", "Text",
+ CellID->14079718],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+  RowBox[{"b", ",", "d"}], "]"}]], "Input",
+ CellLabel->"In[9]:=",
+ CellID->300939052],
+
+Cell[BoxData["False"], "Output",
+ ImageSize->{39, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[9]=",
+ CellID->89303876]
+}, Open  ]],
+
+Cell["We now define an isomorphism between d and c", "Text",
+ CellID->506554766],
+
+Cell[BoxData[
+ RowBox[{"DefIsomorphism", "[", 
+  RowBox[{"d", ",", "c", ",", "\[DoubleStruckCapitalC]"}], "]"}]], "Input",
+ CellLabel->"In[10]:=",
+ CellID->169304911],
+
+Cell["\<\
+WildCats will again automatically use the transitive property of isomorphism \
+to conclude that b and d now are isomorphic\
+\>", "Text",
+ CellID->35569340],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsomorphismQ", "[", "\[DoubleStruckCapitalC]", "]"}], "[", 
+  RowBox[{"b", ",", "d"}], "]"}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->9921673],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]=",
+ CellID->599618906]
+}, Open  ]],
+
+Cell[TextData[{
+ "Isomorphic[\[DoubleStruckCapitalC]] (",
+ Cell[BoxData[
+  UnderscriptBox["\[TildeFullEqual]", "\[DoubleStruckCapitalC]"]]],
+ ") is used to represent a symbolic isomorphism, to be manipulated using \
+functions like IsomorphismQ. "
+}], "Text",
+ CellID->765200195],
+
+Cell[TextData[{
+ "It is used in the same way that Equal is used to represent symbolic \
+equations in ",
+ StyleBox["Mathematica.",
+  FontSlant->"Italic"],
+ " "
+}], "Text",
+ CellID->141970563],
+
+Cell[TextData[{
+ "Also the definition given to Isomorphic in the documentation center mimics \
+that given to ",
+ ButtonBox["Equal",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Equal"],
+ ". "
+}], "Text",
+ CellID->742620981],
+
+Cell["We can test isomorphisms", "Text",
+ CellID->35717441],
+
+Cell["\<\
+This tests if a and c are isomorphic in \[DoubleStruckCapitalC]\
+\>", "Text",
+ CellID->82495365],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", " ", 
+   UnderscriptBox["\[TildeFullEqual]", "\[DoubleStruckCapitalC]"], "c"}], "//",
+   "IsomorphismQ"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->723139996],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]=",
+ CellID->26852950]
+}, Open  ]],
+
+Cell["Testing b and d", "Text",
+ CellID->646749881],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"b", " ", 
+   UnderscriptBox["\[TildeFullEqual]", "\[DoubleStruckCapitalC]"], "d"}], "//",
+   "IsomorphismQ"}]], "Input",
+ CellLabel->"In[13]:=",
+ CellID->345791314],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[13]=",
+ CellID->73393926]
+}, Open  ]],
+
+Cell["In general the test fails", "Text",
+ CellID->653268218],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p", " ", 
+   UnderscriptBox["\[TildeFullEqual]", "\[DoubleStruckCapitalC]"], "q"}], "//",
+   "IsomorphismQ"}]], "Input",
+ CellLabel->"In[15]:=",
+ CellID->666387213],
+
+Cell[BoxData["False"], "Output",
+ ImageSize->{39, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[15]=",
+ CellID->93577443]
+}, Open  ]],
+
+Cell["\<\
+ Finite sets are isomorphic if they have the same number of elements.\
+\>", "Text",
+ CellID->12390399],
+
+Cell["Sets with 2 elements", "Text",
+ CellID->370097861],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FiniteSet", "[", 
+    RowBox[{"\[EmptySet]", ",", "Integers"}], "]"}], " ", 
+   UnderscriptBox["\[TildeFullEqual]", 
+    "\[DoubleStruckCapitalS]\[DoubleStruckE]\[DoubleStruckT]"], 
+   RowBox[{"FiniteSet", "[", 
+    RowBox[{"1", ",", "15"}], "]"}]}], "//", "IsomorphismQ"}]], "Input",
+ CellLabel->"In[16]:=",
+ CellID->497473843],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[16]=",
+ CellID->288231375]
+}, Open  ]],
+
+Cell["a is not a set, so the evaluation is aborted", "Text",
+ CellID->263825966],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FiniteSet", "[", 
+    RowBox[{"\[EmptySet]", ",", "a"}], "]"}], " ", 
+   UnderscriptBox["\[TildeFullEqual]", 
+    "\[DoubleStruckCapitalS]\[DoubleStruckE]\[DoubleStruckT]"], 
+   RowBox[{"FiniteSet", "[", 
+    RowBox[{"1", ",", "15"}], "]"}]}], "//", "IsomorphismQ"}]], "Input",
+ CellLabel->"In[17]:=",
+ CellID->101474702],
+
+Cell[BoxData["$Aborted"], "Output",
+ ImageSize->{60, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[17]=",
+ CellID->246806657]
+}, Open  ]],
+
+Cell["Other sets with 2 elements", "Text",
+ CellID->288986439],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BinarySet", " ", 
+   UnderscriptBox["\[TildeFullEqual]", 
+    "\[DoubleStruckCapitalS]\[DoubleStruckE]\[DoubleStruckT]"], 
+   RowBox[{"FiniteSet", "[", 
+    RowBox[{"1", ",", "15"}], "]"}]}], "//", "IsomorphismQ"}]], "Input",
+ CellLabel->"In[18]:=",
+ CellID->448829498],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[18]=",
+ CellID->489839484]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BinarySet", " ", 
+   UnderscriptBox["\[TildeFullEqual]", 
+    "\[DoubleStruckCapitalS]\[DoubleStruckE]\[DoubleStruckT]"], 
+   RowBox[{"\[ScriptCapitalP]", "[", 
+    RowBox[{"FiniteSet", "[", "\[EmptySet]", "]"}], "]"}]}], "//", 
+  "IsomorphismQ"}]], "Input",
+ CellLabel->"In[19]:=",
+ CellID->97911614],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[19]=",
+ CellID->113702661]
+}, Open  ]],
+
+Cell["Singleton sets", "Text",
+ CellID->771523204],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[ScriptCapitalP]", "[", "\[EmptySet]", "]"}], " ", 
+   UnderscriptBox["\[TildeFullEqual]", 
+    "\[DoubleStruckCapitalS]\[DoubleStruckE]\[DoubleStruckT]"], 
+   "\[FivePointedStar]"}], "//", "IsomorphismQ"}]], "Input",
+ CellLabel->"In[20]:=",
+ CellID->120982930],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[20]=",
+ CellID->891544840]
+}, Open  ]],
+
+Cell["Different cardinalities", "Text",
+ CellID->1018576169],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[FivePointedStar]", " ", 
+   UnderscriptBox["\[TildeFullEqual]", 
+    "\[DoubleStruckCapitalS]\[DoubleStruckE]\[DoubleStruckT]"], 
+   RowBox[{"FiniteSet", "[", 
+    RowBox[{"1", ",", "15"}], "]"}]}], "//", "IsomorphismQ"}]], "Input",
+ CellLabel->"In[21]:=",
+ CellID->110482027],
+
+Cell[BoxData["False"], "Output",
+ ImageSize->{39, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[21]=",
+ CellID->794084583]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Integers", " ", 
+   UnderscriptBox["\[TildeFullEqual]", 
+    "\[DoubleStruckCapitalS]\[DoubleStruckE]\[DoubleStruckT]"], "Reals"}], "//",
+   "IsomorphismQ"}]], "Input",
+ CellLabel->"In[22]:=",
+ CellID->165647325],
+
+Cell[BoxData["False"], "Output",
+ ImageSize->{39, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[22]=",
+ CellID->9913617]
+}, Open  ]],
+
+Cell["\<\
+Some well-known isomorphisms in \[DoubleStruckCapitalS]\[DoubleStruckE]\
+\[DoubleStruckT] (and elsewhere) are known to WildCats.\
+\>", "Text",
+ CellID->1156610],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Integers", " ", 
+   UnderscriptBox["\[TildeFullEqual]", 
+    "\[DoubleStruckCapitalS]\[DoubleStruckE]\[DoubleStruckT]"], "Naturals"}], 
+  "//", "IsomorphismQ"}]], "Input",
+ CellLabel->"In[23]:=",
+ CellID->493311432],
+
+Cell[BoxData["True"], "Output",
+ ImageSize->{32, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[23]=",
+ CellID->293338324]
+}, Open  ]],
+
+Cell["Further examples will follow in future releases", "Text",
+ CellID->125236090]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["MORE ABOUT", "TutorialMoreAboutSection",
+ CellID->961285135],
+
+Cell[TextData[ButtonBox["WildCats Guide",
+ BaseStyle->"Link",
+ ButtonData->"paclet:WildCats/guide/WildCats"]], "TutorialMoreAbout",
+ CellID->70541790]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["NEXT TUTORIAL", "RelatedTutorialsSection",
+ CellID->295681771],
+
+Cell[TextData[ButtonBox["Displaying diagrams",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:WildCats/tutorial/DisplayingDiagrams"]], "RelatedTutorials",
+ CellID->111726643]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Morphisms and composition - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "built" -> "{2013, 5, 29, 1, 26, 38.0312500}", "context" -> "WildCats`", 
+    "keywords" -> {}, "index" -> True, "label" -> 
+    "Wild Cats Package Tutorial", "language" -> "en", "paclet" -> 
+    "WildCats Package", "status" -> "None", "summary" -> 
+    "This terminates the current Mathematica session and starts a new clean \
+session (recommended for troubleshooting) This loads the package:", 
+    "synonyms" -> {}, "title" -> "Morphisms and composition", "type" -> 
+    "Tutorial", "uri" -> "WildCats/tutorial/MorphismsAndComposition"}, 
+  "LinkTrails" -> "", "SearchTextTranslated" -> ""},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["TutorialMoreAboutSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["RelatedTutorialsSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["TutorialRelatedLinksSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
+  FrontEndVersion -> "8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+   StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[618, 21, 78, 1, 70, "TutorialColorBar"],
+Cell[699, 24, 179, 5, 70, "LinkTrail"],
+Cell[881, 31, 3676, 83, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4582, 118, 62, 1, 70, "Title",
+ CellID->509267359],
+Cell[4647, 121, 171, 6, 70, "Text",
+ CellID->12172402],
+Cell[4821, 129, 69, 1, 70, "Text",
+ CellID->121457497],
+Cell[4893, 132, 73, 2, 70, "Input",
+ CellID->309037897],
+Cell[4969, 136, 60, 1, 70, "Text",
+ CellID->1825449234],
+Cell[CellGroupData[{
+Cell[5054, 141, 116, 3, 70, "Input",
+ CellID->98796305],
+Cell[5173, 146, 877, 22, 70, "Print",
+ CellID->512340332]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6087, 173, 72, 1, 70, "Section",
+ CellID->358802463],
+Cell[6162, 176, 92, 1, 70, "Text",
+ CellID->14534984],
+Cell[6257, 179, 1633, 61, 70, "DefinitionBox",
+ CellID->53979084],
+Cell[7893, 242, 85, 1, 70, "Caption",
+ CellID->307156157],
+Cell[7981, 245, 175, 4, 70, "Text",
+ CellID->322829799],
+Cell[8159, 251, 432, 9, 70, "Text",
+ CellID->529195021],
+Cell[8594, 262, 233, 5, 70, "Text",
+ CellID->5948448],
+Cell[8830, 269, 310, 10, 70, "Text",
+ CellID->482853909],
+Cell[9143, 281, 91, 1, 70, "Text",
+ CellID->284381241],
+Cell[CellGroupData[{
+Cell[9259, 286, 226, 7, 70, "Input",
+ CellID->105709918],
+Cell[9488, 295, 235, 7, 36, "Output",
+ CellID->18641212]
+}, Open  ]],
+Cell[9738, 305, 132, 4, 70, "Text",
+ CellID->635870023],
+Cell[CellGroupData[{
+Cell[9895, 313, 222, 7, 70, "Input",
+ CellID->5702621],
+Cell[10120, 322, 236, 7, 36, "Output",
+ CellID->286022784]
+}, Open  ]],
+Cell[10371, 332, 136, 4, 70, "Text",
+ CellID->6082202],
+Cell[CellGroupData[{
+Cell[10532, 340, 159, 4, 70, "Input",
+ CellID->51781414],
+Cell[10694, 346, 228, 7, 36, "Output",
+ CellID->263823987]
+}, Open  ]],
+Cell[10937, 356, 316, 10, 70, "Text",
+ CellID->527725998],
+Cell[11256, 368, 549, 16, 70, "Input",
+ CellID->116325141],
+Cell[11808, 386, 327, 9, 70, "Text",
+ CellID->87388233],
+Cell[CellGroupData[{
+Cell[12160, 399, 161, 4, 70, "Input",
+ CellID->74457813],
+Cell[12324, 405, 216, 7, 36, "Output",
+ CellID->562383849]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12577, 417, 296, 10, 70, "Input",
+ CellID->42135938],
+Cell[12876, 429, 223, 7, 36, "Output",
+ CellID->494396053]
+}, Open  ]],
+Cell[13114, 439, 47, 1, 70, "Text",
+ CellID->156888268],
+Cell[CellGroupData[{
+Cell[13186, 444, 184, 6, 70, "Input",
+ CellID->392817837],
+Cell[13373, 452, 160, 5, 36, "Output",
+ CellID->687863488]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13570, 462, 184, 6, 70, "Input",
+ CellID->112728723],
+Cell[13757, 470, 160, 5, 36, "Output",
+ CellID->751763745]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13954, 480, 183, 6, 70, "Input",
+ CellID->50309444],
+Cell[14140, 488, 160, 5, 36, "Output",
+ CellID->140438883]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14337, 498, 184, 6, 70, "Input",
+ CellID->216625066],
+Cell[14524, 506, 159, 5, 36, "Output",
+ CellID->22289159]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14720, 516, 183, 6, 70, "Input",
+ CellID->15567179],
+Cell[14906, 524, 160, 5, 36, "Output",
+ CellID->933638138]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15103, 534, 184, 6, 70, "Input",
+ CellID->523966707],
+Cell[15290, 542, 160, 5, 36, "Output",
+ CellID->417384656]
+}, Open  ]],
+Cell[15465, 550, 256, 8, 70, "Text",
+ CellID->91489854],
+Cell[15724, 560, 520, 19, 70, "DefinitionBox",
+ CellID->191169632],
+Cell[16247, 581, 70, 1, 70, "Caption",
+ CellID->97514833],
+Cell[CellGroupData[{
+Cell[16342, 586, 182, 6, 70, "Input",
+ CellID->22468142],
+Cell[16527, 594, 237, 8, 36, "Output",
+ CellID->177664918]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16801, 607, 181, 6, 70, "Input",
+ CellID->7276119],
+Cell[16985, 615, 237, 8, 36, "Output",
+ CellID->885132613]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17259, 628, 182, 6, 70, "Input",
+ CellID->86616915],
+Cell[17444, 636, 237, 8, 36, "Output",
+ CellID->203322018]
+}, Open  ]],
+Cell[17696, 647, 486, 16, 70, "Text",
+ CellID->378713040],
+Cell[18185, 665, 150, 4, 70, "Text",
+ CellID->132375496],
+Cell[CellGroupData[{
+Cell[18360, 673, 198, 7, 70, "Input",
+ CellID->672952109],
+Cell[18561, 682, 286, 9, 44, "Output",
+ CellID->314367302]
+}, Open  ]],
+Cell[18862, 694, 473, 12, 70, "Text",
+ CellID->705443654],
+Cell[19338, 708, 91, 1, 70, "Text",
+ CellID->268669644],
+Cell[19432, 711, 138, 4, 70, "Text",
+ CellID->379104138],
+Cell[19573, 717, 542, 13, 70, "Text",
+ CellID->30424415],
+Cell[20118, 732, 1048, 36, 70, "DefinitionBox",
+ CellID->266772622],
+Cell[21169, 770, 570, 16, 70, "Text",
+ CellID->134780893],
+Cell[CellGroupData[{
+Cell[21764, 790, 322, 10, 70, "Input",
+ CellID->243295633],
+Cell[22089, 802, 162, 5, 36, "Output",
+ CellID->182117859]
+}, Open  ]],
+Cell[22266, 810, 181, 7, 70, "Text",
+ CellID->49096386],
+Cell[CellGroupData[{
+Cell[22472, 821, 326, 10, 70, "Input",
+ CellID->132176683],
+Cell[22801, 833, 408, 12, 44, "Output",
+ CellID->299570999]
+}, Open  ]],
+Cell[23224, 848, 38, 1, 70, "Text",
+ CellID->434829718],
+Cell[CellGroupData[{
+Cell[23287, 853, 350, 10, 70, "Input",
+ CellID->34316674],
+Cell[23640, 865, 408, 12, 44, "Output",
+ CellID->374989292]
+}, Open  ]],
+Cell[24063, 880, 191, 7, 70, "Text",
+ CellID->656244376],
+Cell[24257, 889, 842, 32, 70, "DefinitionBox",
+ CellID->785282139],
+Cell[25102, 923, 57, 1, 70, "Caption",
+ CellID->85869158],
+Cell[CellGroupData[{
+Cell[25184, 928, 305, 9, 70, "Input",
+ CellID->598587979],
+Cell[25492, 939, 160, 5, 36, "Output",
+ CellID->123943630]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25689, 949, 284, 8, 70, "Input",
+ CellID->363762361],
+Cell[25976, 959, 160, 5, 36, "Output",
+ CellID->261395442]
+}, Open  ]],
+Cell[26151, 967, 66, 1, 70, "Text",
+ CellID->345684680],
+Cell[CellGroupData[{
+Cell[26242, 972, 123, 4, 70, "Input",
+ CellID->7077067],
+Cell[26368, 978, 263, 7, 70, "Message",
+ CellID->356193465],
+Cell[26634, 987, 166, 5, 36, "Output",
+ CellID->683527645]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26837, 997, 183, 6, 70, "Input",
+ CellID->665982123],
+Cell[27023, 1005, 346, 8, 70, "Message",
+ CellID->308154445],
+Cell[27372, 1015, 165, 5, 36, "Output",
+ CellID->16605634]
+}, Open  ]],
+Cell[27552, 1023, 125, 4, 70, "Text",
+ CellID->938692815],
+Cell[27680, 1029, 122, 3, 70, "Text",
+ CellID->145317584],
+Cell[27805, 1034, 105, 3, 70, "Text",
+ CellID->36620014],
+Cell[CellGroupData[{
+Cell[27935, 1041, 313, 9, 70, "Input",
+ CellID->385802740],
+Cell[28251, 1052, 370, 12, 46, "Output",
+ CellID->205196074]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28658, 1069, 428, 11, 70, "Input",
+ CellID->287392343],
+Cell[29089, 1082, 495, 15, 46, "Output",
+ CellID->3253112]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29621, 1102, 277, 8, 70, "Input",
+ CellID->131648336],
+Cell[29901, 1112, 334, 11, 39, "Output",
+ CellID->120249089]
+}, Open  ]],
+Cell[30250, 1126, 198, 7, 70, "Text",
+ CellID->64440227],
+Cell[CellGroupData[{
+Cell[30473, 1137, 183, 6, 70, "Input",
+ CellID->334936674],
+Cell[30659, 1145, 159, 5, 36, "Output",
+ CellID->76518139]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[30867, 1156, 49, 1, 70, "Section",
+ CellID->2234655],
+Cell[30919, 1159, 341, 6, 70, "Text",
+ CellID->389976467],
+Cell[31263, 1167, 187, 4, 70, "Text",
+ CellID->215910495],
+Cell[31453, 1173, 80, 1, 70, "Text",
+ CellID->554251983],
+Cell[31536, 1176, 2067, 77, 70, "DefinitionBox",
+ CellID->347636196],
+Cell[33606, 1255, 88, 1, 70, "Caption",
+ CellID->265526728],
+Cell[33697, 1258, 121, 3, 70, "Text",
+ CellID->158026164],
+Cell[33821, 1263, 128, 3, 70, "Input",
+ CellID->19701773],
+Cell[33952, 1268, 77, 1, 70, "Text",
+ CellID->107765278],
+Cell[CellGroupData[{
+Cell[34054, 1273, 182, 5, 70, "Input",
+ CellID->59585733],
+Cell[34239, 1280, 236, 7, 36, "Output",
+ CellID->275401668]
+}, Open  ]],
+Cell[34490, 1290, 84, 1, 70, "Text",
+ CellID->346903972],
+Cell[34577, 1293, 165, 4, 70, "Input",
+ CellID->273279975],
+Cell[34745, 1299, 84, 1, 70, "Text",
+ CellID->587577139],
+Cell[34832, 1302, 165, 4, 70, "Input",
+ CellID->150168550],
+Cell[35000, 1308, 162, 4, 70, "Text",
+ CellID->699853762],
+Cell[35165, 1314, 122, 3, 70, "Text",
+ CellID->755513680],
+Cell[CellGroupData[{
+Cell[35312, 1321, 348, 10, 70, "Input",
+ CellID->53840751],
+Cell[35663, 1333, 208, 7, 36, "Output",
+ CellID->20300558]
+}, Open  ]],
+Cell[35886, 1343, 140, 4, 70, "Text",
+ CellID->90289793],
+Cell[CellGroupData[{
+Cell[36051, 1351, 476, 13, 70, "Input",
+ CellID->378117039],
+Cell[36530, 1366, 226, 7, 36, "Output",
+ CellID->898300565]
+}, Open  ]],
+Cell[36771, 1376, 81, 1, 70, "Text",
+ CellID->272356460],
+Cell[CellGroupData[{
+Cell[36877, 1381, 181, 5, 70, "Input",
+ CellID->817474098],
+Cell[37061, 1388, 160, 5, 36, "Output",
+ CellID->36681386]
+}, Open  ]],
+Cell[37236, 1396, 72, 1, 70, "Text",
+ CellID->954219632],
+Cell[CellGroupData[{
+Cell[37333, 1401, 181, 5, 70, "Input",
+ CellID->345286876],
+Cell[37517, 1408, 161, 5, 36, "Output",
+ CellID->164390855]
+}, Open  ]],
+Cell[37693, 1416, 151, 4, 70, "Text",
+ CellID->116329986],
+Cell[CellGroupData[{
+Cell[37869, 1424, 180, 5, 70, "Input",
+ CellID->28636138],
+Cell[38052, 1431, 160, 5, 36, "Output",
+ CellID->95029273]
+}, Open  ]],
+Cell[38227, 1439, 76, 1, 70, "Text",
+ CellID->14079718],
+Cell[CellGroupData[{
+Cell[38328, 1444, 181, 5, 70, "Input",
+ CellID->300939052],
+Cell[38512, 1451, 161, 5, 36, "Output",
+ CellID->89303876]
+}, Open  ]],
+Cell[38688, 1459, 80, 1, 70, "Text",
+ CellID->506554766],
+Cell[38771, 1462, 166, 4, 70, "Input",
+ CellID->169304911],
+Cell[38940, 1468, 165, 4, 70, "Text",
+ CellID->35569340],
+Cell[CellGroupData[{
+Cell[39130, 1476, 180, 5, 70, "Input",
+ CellID->9921673],
+Cell[39313, 1483, 162, 5, 36, "Output",
+ CellID->599618906]
+}, Open  ]],
+Cell[39490, 1491, 278, 7, 70, "Text",
+ CellID->765200195],
+Cell[39771, 1500, 190, 7, 70, "Text",
+ CellID->141970563],
+Cell[39964, 1509, 225, 8, 70, "Text",
+ CellID->742620981],
+Cell[40192, 1519, 59, 1, 70, "Text",
+ CellID->35717441],
+Cell[40254, 1522, 106, 3, 70, "Text",
+ CellID->82495365],
+Cell[CellGroupData[{
+Cell[40385, 1529, 199, 6, 70, "Input",
+ CellID->723139996],
+Cell[40587, 1537, 161, 5, 36, "Output",
+ CellID->26852950]
+}, Open  ]],
+Cell[40763, 1545, 51, 1, 70, "Text",
+ CellID->646749881],
+Cell[CellGroupData[{
+Cell[40839, 1550, 199, 6, 70, "Input",
+ CellID->345791314],
+Cell[41041, 1558, 161, 5, 36, "Output",
+ CellID->73393926]
+}, Open  ]],
+Cell[41217, 1566, 61, 1, 70, "Text",
+ CellID->653268218],
+Cell[CellGroupData[{
+Cell[41303, 1571, 199, 6, 70, "Input",
+ CellID->666387213],
+Cell[41505, 1579, 162, 5, 36, "Output",
+ CellID->93577443]
+}, Open  ]],
+Cell[41682, 1587, 112, 3, 70, "Text",
+ CellID->12390399],
+Cell[41797, 1592, 56, 1, 70, "Text",
+ CellID->370097861],
+Cell[CellGroupData[{
+Cell[41878, 1597, 375, 10, 70, "Input",
+ CellID->497473843],
+Cell[42256, 1609, 162, 5, 36, "Output",
+ CellID->288231375]
+}, Open  ]],
+Cell[42433, 1617, 80, 1, 70, "Text",
+ CellID->263825966],
+Cell[CellGroupData[{
+Cell[42538, 1622, 368, 10, 70, "Input",
+ CellID->101474702],
+Cell[42909, 1634, 166, 5, 36, "Output",
+ CellID->246806657]
+}, Open  ]],
+Cell[43090, 1642, 62, 1, 70, "Text",
+ CellID->288986439],
+Cell[CellGroupData[{
+Cell[43177, 1647, 304, 8, 70, "Input",
+ CellID->448829498],
+Cell[43484, 1657, 162, 5, 36, "Output",
+ CellID->489839484]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43683, 1667, 336, 9, 70, "Input",
+ CellID->97911614],
+Cell[44022, 1678, 162, 5, 36, "Output",
+ CellID->113702661]
+}, Open  ]],
+Cell[44199, 1686, 50, 1, 70, "Text",
+ CellID->771523204],
+Cell[CellGroupData[{
+Cell[44274, 1691, 309, 8, 70, "Input",
+ CellID->120982930],
+Cell[44586, 1701, 162, 5, 36, "Output",
+ CellID->891544840]
+}, Open  ]],
+Cell[44763, 1709, 60, 1, 70, "Text",
+ CellID->1018576169],
+Cell[CellGroupData[{
+Cell[44848, 1714, 313, 8, 70, "Input",
+ CellID->110482027],
+Cell[45164, 1724, 163, 5, 36, "Output",
+ CellID->794084583]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45364, 1734, 247, 7, 70, "Input",
+ CellID->165647325],
+Cell[45614, 1743, 161, 5, 36, "Output",
+ CellID->9913617]
+}, Open  ]],
+Cell[45790, 1751, 170, 4, 70, "Text",
+ CellID->1156610],
+Cell[CellGroupData[{
+Cell[45985, 1759, 250, 7, 70, "Input",
+ CellID->493311432],
+Cell[46238, 1768, 162, 5, 36, "Output",
+ CellID->293338324]
+}, Open  ]],
+Cell[46415, 1776, 83, 1, 70, "Text",
+ CellID->125236090]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[46535, 1782, 66, 1, 70, "TutorialMoreAboutSection",
+ CellID->961285135],
+Cell[46604, 1785, 150, 3, 70, "TutorialMoreAbout",
+ CellID->70541790]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46791, 1793, 68, 1, 70, "RelatedTutorialsSection",
+ CellID->295681771],
+Cell[46862, 1796, 171, 4, 70, "RelatedTutorials",
+ CellID->111726643]
+}, Open  ]]
+}, Open  ]],
+Cell[47060, 1804, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
